@@ -1,0 +1,82 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="IslamicDailyGuides.DaftarAmal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+            <DataTemplate x:Key="AmalListBoxItemTemplate">
+                <Grid HorizontalAlignment="Stretch" Width="420">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    HorizontalAlignment="Stretch"
+                    Grid.Column="0"
+                    x:Name="bukaAmalButton"
+                    Content="{Binding ItemName}"
+                    Click="bukaAmalButton_Click"
+                    Foreground="Black"/>
+                </Grid>
+            </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#FFFFFFFF" >
+        <!--Pivot Control-->
+        <phone:Pivot Title="DAFTAR AMAL" x:Name="pivotControl" Foreground="#FF850303">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="semua">
+                <ListBox 
+                        x:Name="allAmalItemsListBox" 
+                        ItemsSource="{Binding AllAmalItems}" 
+                        Margin="12, 0, 12, 0" Width="440" 
+                        ItemTemplate="{StaticResource AmalListBoxItemTemplate}" />
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="pagi">
+                <ListBox 
+                        x:Name="amalPagiItemsListBox" 
+                        ItemsSource="{Binding PagiAmalItems}" 
+                        Margin="12, 0, 12, 0" Width="440" 
+                        ItemTemplate="{StaticResource AmalListBoxItemTemplate}" />
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="siang">
+                <ListBox 
+                        x:Name="amalSiangItemsListBox" 
+                        ItemsSource="{Binding SiangAmalItems}" 
+                        Margin="12, 0, 12, 0" Width="440" 
+                        ItemTemplate="{StaticResource AmalListBoxItemTemplate}" />
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="malam">
+                <ListBox
+                        x:Name="amalMalamItemsListBox" 
+                        ItemsSource="{Binding MalamAmalItems}" 
+                        Margin="12, 0, 12, 0" Width="440" 
+                        ItemTemplate="{StaticResource AmalListBoxItemTemplate}" />
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="lain-lain">
+                <ListBox
+                        x:Name="amalLainItemsListBox" 
+                        ItemsSource="{Binding LainAmalItems}" 
+                        Margin="12, 0, 12, 0" Width="440" 
+                        ItemTemplate="{StaticResource AmalListBoxItemTemplate}" />
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+    
+</phone:PhoneApplicationPage>
